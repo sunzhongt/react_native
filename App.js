@@ -1,17 +1,22 @@
-/** 
- * Appjs 项目容器
- *
+/**
+ *  App 
  */
-import { createSwitchNavigator, createAppContainer } from "react-navigation";
+
 import React, {Component,Fragment} from 'react';
-import {  StyleSheet, Text, View} from 'react-native';
-import Pages from './Pages/RouterNavigetion';    
-  class App extends Component<Props> {
+import { StyleSheet, Text, View} from 'react-native';
+import AppRouter from './pages/AppRouter'; 
+import {Provider} from 'react-redux'; 
+import store from './store';
+export default class App extends Component<Props> {
   render() {
     return (
       <Fragment>
-         <Pages />  
+        <Provider store={store}>
+           <AppRouter/>
+        </Provider>
+       
       </Fragment>
+      
     );
   }
 }
@@ -19,14 +24,3 @@ import Pages from './Pages/RouterNavigetion';
 const styles = StyleSheet.create({
   
 });
-const AppNavigator = createSwitchNavigator({
-  App: {
-    screen: App
-  },
- 
-});
-
-export default createAppContainer(AppNavigator);
-// export default App;
-
-
